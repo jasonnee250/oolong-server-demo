@@ -1,7 +1,10 @@
 package org.oolong.entity;
 
 import org.junit.Test;
+import org.oolong.biz.math.GainProcessNode;
 import org.oolong.entity.basic.Node;
+import org.oolong.entity.config.RunConfig;
+import org.oolong.entity.context.RunContext;
 import org.oolong.entity.sink.AbsSinkNode;
 import org.oolong.entity.source.AbsSourceNode;
 import org.oolong.entity.stream.Stream;
@@ -20,9 +23,13 @@ public class TestSimpleStream {
         Stream stream=new Stream();
         AbsSourceNode source=new ConstSourceNode(5);
         AbsSinkNode sink=new NormalSinkNode();
+        GainProcessNode node=new GainProcessNode(2);
+        RunConfig config=new RunConfig(10,1);
+        RunContext ctx=new RunContext();
         stream.addSource(source);
         stream.addSink(sink);
-        stream.run();
-
+        stream.pushNode(node);
+        stream.run(config,ctx);
+        System.out.println(ctx.getRunResult().toString());
     }
 }

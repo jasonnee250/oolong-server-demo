@@ -1,6 +1,8 @@
 package org.oolong.entity.source;
 
 import org.oolong.entity.basic.Node;
+import org.oolong.entity.config.RunConfig;
+import org.oolong.entity.context.RunContext;
 
 /**
  * @Author: J.N
@@ -21,7 +23,7 @@ public class ConstSourceNode extends AbsSourceNode {
     }
 
     @Override
-    public void process() {
+    public void process(RunConfig config, RunContext ctx) {
 
     }
 }

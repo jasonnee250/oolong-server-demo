@@ -3,6 +3,8 @@ package org.oolong.entity.stream;
 import org.oolong.entity.basic.Node;
 import org.oolong.entity.basic.ProcessNode;
 import org.oolong.entity.basic.Unit;
+import org.oolong.entity.config.RunConfig;
+import org.oolong.entity.context.RunContext;
 import org.oolong.entity.sink.AbsSinkNode;
 import org.oolong.entity.source.AbsSourceNode;
 
@@ -24,7 +26,7 @@ public class Stream extends Unit {
     /**
      * 储存节点
      */
-    LinkedList<ProcessNode> list=new LinkedList<>();
+    LinkedList<ProcessNode> list = new LinkedList<>();
 
 
     public Stream() {
@@ -32,11 +34,12 @@ public class Stream extends Unit {
         num++;
     }
 
-    public void addSource(AbsSourceNode source){
-        this.source=source;
+    public void addSource(AbsSourceNode source) {
+        this.source = source;
     }
-    public void addSink(AbsSinkNode sink){
-        this.sink=sink;
+
+    public void addSink(AbsSinkNode sink) {
+        this.sink = sink;
     }
 
     /**
@@ -65,16 +68,25 @@ public class Stream extends Unit {
         list.removeLast();
     }
 
-    public void run() {
+    public void run(RunConfig runConfig, RunContext ctx) {
+        for (float t = 0; t < runConfig.simulateTime; t = t + runConfig.stepTime) {
+            ctx.setCurrentTime(t);
+            this.stepRun(runConfig, ctx);
+        }
+    }
+
+    public void stepRun(RunConfig config, RunContext ctx) {
         Iterator<ProcessNode> iterator = list.iterator();
         int value;
-        value=source.output();
+        source.process(config, ctx);
+        value = source.output();
         while (iterator.hasNext()) {
-            ProcessNode node=iterator.next();
+            ProcessNode node = iterator.next();
             node.input(value);
-            node.process();
-            value=node.output();
+            node.process(config, ctx);
+            value = node.output();
         }
         sink.input(value);
+        sink.process(config, ctx);
     }
 }
