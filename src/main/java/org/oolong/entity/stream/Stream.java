@@ -1,6 +1,5 @@
 package org.oolong.entity.stream;
 
-import org.oolong.entity.basic.Node;
 import org.oolong.entity.basic.ProcessNode;
 import org.oolong.entity.basic.Unit;
 import org.oolong.entity.config.RunConfig;

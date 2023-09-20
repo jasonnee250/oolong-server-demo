@@ -2,7 +2,6 @@ package org.oolong.entity;
 
 import org.junit.Test;
 import org.oolong.biz.math.GainProcessNode;
-import org.oolong.entity.basic.Node;
 import org.oolong.entity.config.RunConfig;
 import org.oolong.entity.context.RunContext;
 import org.oolong.entity.sink.AbsSinkNode;
