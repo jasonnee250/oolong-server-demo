@@ -2,6 +2,7 @@ package org.oolong.entity.basic;
 
 import org.oolong.entity.config.RunConfig;
 import org.oolong.entity.context.RunContext;
+import org.oolong.entity.serializable.NodeDO;
 
 /**
  * @Author: J.N
@@ -13,9 +14,12 @@ public abstract class Node extends Unit implements IProcessor {
     static String PREFIX = "node-";
     static int num = 0;
 
+    protected NodeType nodeType;
+
     public Node() {
         super(PREFIX + num);
         num++;
+        this.nodeType=new NodeType(BasicType.UNKOWN,SubType.UNKNOWN);
     }
 
     @Override
@@ -24,5 +28,11 @@ public abstract class Node extends Unit implements IProcessor {
 
     @Override
     public void stop(RunConfig config, RunContext ctx) {
+    }
+
+    public abstract NodeDO toNodeDO();
+
+    protected NodeDO convertToData(){
+        return new NodeDO(this.id,this.nodeType);
     }
 }

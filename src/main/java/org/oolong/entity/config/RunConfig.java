@@ -9,14 +9,24 @@ import lombok.Setter;
  * @Version 1.0
  * 运行配置类
  */
+@Setter @Getter
 public class RunConfig {
-    @Setter @Getter
+
     public float simulateTime=1.0f;
-    @Setter @Getter
     public float stepTime=0.1f;
 
     public RunConfig(float simulateTime,float stepTime){
         this.simulateTime=simulateTime;
         this.stepTime=stepTime;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder=new StringBuilder();
+        builder.append("=============run config==============\n")
+                .append("simulate time: "+simulateTime+"\n")
+                .append("step time: "+stepTime+"\n")
+                .append("===========================\n");
+        return builder.toString();
     }
 }

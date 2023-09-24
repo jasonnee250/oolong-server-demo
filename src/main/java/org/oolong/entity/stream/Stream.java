@@ -1,12 +1,18 @@
 package org.oolong.entity.stream;
 
+import com.alibaba.fastjson2.annotation.JSONField;
+import lombok.Getter;
+import lombok.Setter;
+import org.oolong.entity.basic.Node;
 import org.oolong.entity.basic.ProcessNode;
 import org.oolong.entity.basic.Unit;
 import org.oolong.entity.config.RunConfig;
 import org.oolong.entity.context.RunContext;
+import org.oolong.entity.serializable.StreamDO;
 import org.oolong.entity.sink.AbsSinkNode;
 import org.oolong.entity.source.AbsSourceNode;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -87,5 +93,15 @@ public class Stream extends Unit {
         }
         sink.input(value);
         sink.process(config, ctx);
+    }
+
+    public StreamDO toStreamDO(){
+        StreamDO streamDO=new StreamDO(this.id);
+        streamDO.addNode(source.toNodeDO());
+        for(Node node:list){
+            streamDO.addNode(node.toNodeDO());
+        }
+        streamDO.addNode(sink.toNodeDO());
+        return streamDO;
     }
 }
