@@ -1,10 +1,10 @@
 package org.oolong.entity;
 
 import org.oolong.biz.math.GainProcessNode;
-import org.oolong.entity.sink.AbsSinkNode;
-import org.oolong.entity.sink.NormalSinkNode;
-import org.oolong.entity.source.AbsSourceNode;
-import org.oolong.entity.source.ConstSourceNode;
+import org.oolong.biz.sink.AbsSinkNode;
+import org.oolong.biz.sink.NormalSinkNode;
+import org.oolong.biz.source.AbsSourceNode;
+import org.oolong.biz.source.ConstSourceNode;
 import org.oolong.entity.stream.Stream;
 
 /**

@@ -1,4 +1,4 @@
-package org.oolong.entity.sink;
+package org.oolong.biz.sink;
 
 import org.oolong.entity.basic.IInput;
 import org.oolong.entity.basic.Node;

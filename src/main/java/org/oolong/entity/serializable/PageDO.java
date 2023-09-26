@@ -17,11 +17,14 @@ import java.util.List;
 @Setter
 public class PageDO implements Serializable {
 
+    String id;
+
     List<StreamDO> streamList;
 
     RunConfig config;
 
-    public PageDO(RunConfig config){
+    public PageDO(String id,RunConfig config){
+        this.id=id;
         streamList=new ArrayList<>();
         this.config=config;
     }

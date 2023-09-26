@@ -1,9 +1,7 @@
 package org.oolong.entity.serializable;
 
 import lombok.Getter;
-import org.oolong.entity.basic.BasicType;
-import org.oolong.entity.basic.NodeType;
-import org.oolong.entity.basic.SubType;
+import org.oolong.entity.basic.BizNodeType;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -18,13 +16,13 @@ public class NodeDO implements Serializable {
     @Getter
     String id;
     @Getter
-    NodeType nodeType;
+    BizNodeType bizNodeType;
     @Getter
     Map<String,Object> params;
 
-    public NodeDO(String id,NodeType nodeType){
+    public NodeDO(String id, BizNodeType nodeType){
         this.id=id;
-        this.nodeType=nodeType;
+        this.bizNodeType=nodeType;
         this.params=new HashMap<>();
     }
 
@@ -37,7 +35,7 @@ public class NodeDO implements Serializable {
         StringBuilder builder=new StringBuilder();
         builder.append("=================start=======================\n")
                 .append("id: "+id+"\n")
-                .append("node type: "+nodeType+"\n");
+                .append("node type: "+bizNodeType+"\n");
         for(Map.Entry<String,Object> entry : params.entrySet()){
             builder.append(entry.getKey()+" : "+entry.getValue()+"\n");
         }

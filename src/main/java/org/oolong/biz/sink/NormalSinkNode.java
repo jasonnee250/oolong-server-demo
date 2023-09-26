@@ -1,4 +1,4 @@
-package org.oolong.entity.sink;
+package org.oolong.biz.sink;
 
 import org.oolong.core.TValue;
 import org.oolong.entity.basic.BasicType;
@@ -18,6 +18,11 @@ public class NormalSinkNode extends AbsSinkNode{
 
     public NormalSinkNode(){
         this.nodeType.setType(BasicType.SINK, SubType.NORMAL_SINK);
+    }
+
+    public NormalSinkNode(String id){
+        this();
+        this.id=id;
     }
     @Override
     public void input(int value) {

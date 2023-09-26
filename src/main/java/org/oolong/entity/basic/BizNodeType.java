@@ -5,11 +5,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class NodeType {
+public class BizNodeType {
     BasicType basicType;
     SubType subType;
 
-    public NodeType(BasicType basicType,SubType subType){
+    public BizNodeType(BasicType basicType, SubType subType){
         this.basicType=basicType;
         this.subType=subType;
     }

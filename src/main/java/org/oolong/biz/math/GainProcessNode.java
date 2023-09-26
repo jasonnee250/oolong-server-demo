@@ -26,13 +26,19 @@ public class GainProcessNode extends ProcessNode {
      */
     private int value;
 
-    public GainProcessNode(int param){
-        this.param=param;
-        this.nodeType.setType(BasicType.PROCESS,SubType.GAIN_PROCESS);
+    public GainProcessNode(String id, int param) {
+        this(param);
+        this.id = id;
     }
+
+    public GainProcessNode(int param) {
+        this.param = param;
+        this.nodeType.setType(BasicType.PROCESS, SubType.GAIN_PROCESS);
+    }
+
     @Override
     public void input(int value) {
-        this.value=value;
+        this.value = value;
     }
 
     @Override
@@ -42,13 +48,13 @@ public class GainProcessNode extends ProcessNode {
 
     @Override
     public void process(RunConfig config, RunContext ctx) {
-        this.value=this.value*this.param;
+        this.value = this.value * this.param;
     }
 
     @Override
     public NodeDO toNodeDO() {
-        NodeDO nodeDO=this.convertToData();
-        nodeDO.setParam("param",param);
+        NodeDO nodeDO = this.convertToData();
+        nodeDO.setParam("param", param);
         return nodeDO;
     }
 }

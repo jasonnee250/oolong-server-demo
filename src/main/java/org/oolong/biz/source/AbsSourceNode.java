@@ -1,4 +1,4 @@
-package org.oolong.entity.source;
+package org.oolong.biz.source;
 
 import org.oolong.entity.basic.IOutput;
 import org.oolong.entity.basic.Node;

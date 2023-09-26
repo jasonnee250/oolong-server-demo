@@ -1,7 +1,6 @@
-package org.oolong.entity.source;
+package org.oolong.biz.source;
 
 import org.oolong.entity.basic.BasicType;
-import org.oolong.entity.basic.Node;
 import org.oolong.entity.basic.SubType;
 import org.oolong.entity.config.RunConfig;
 import org.oolong.entity.context.RunContext;
@@ -14,6 +13,11 @@ import org.oolong.entity.serializable.NodeDO;
  */
 public class ConstSourceNode extends AbsSourceNode {
     int value;
+
+    public ConstSourceNode(String id,int value){
+        this(value);
+        this.id=id;
+    }
 
     public ConstSourceNode(int value){
         this.value=value;

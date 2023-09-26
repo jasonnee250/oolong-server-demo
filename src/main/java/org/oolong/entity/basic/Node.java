@@ -14,12 +14,12 @@ public abstract class Node extends Unit implements IProcessor {
     static String PREFIX = "node-";
     static int num = 0;
 
-    protected NodeType nodeType;
+    protected BizNodeType nodeType;
 
     public Node() {
         super(PREFIX + num);
         num++;
-        this.nodeType=new NodeType(BasicType.UNKOWN,SubType.UNKNOWN);
+        this.nodeType=new BizNodeType(BasicType.UNKOWN,SubType.UNKNOWN);
     }
 
     @Override

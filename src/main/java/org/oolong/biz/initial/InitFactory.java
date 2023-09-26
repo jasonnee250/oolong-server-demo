@@ -9,10 +9,10 @@ import org.oolong.entity.doc.Page;
 import org.oolong.entity.serializable.NodeDO;
 import org.oolong.entity.serializable.PageDO;
 import org.oolong.entity.serializable.StreamDO;
-import org.oolong.entity.sink.AbsSinkNode;
-import org.oolong.entity.sink.NormalSinkNode;
-import org.oolong.entity.source.AbsSourceNode;
-import org.oolong.entity.source.ConstSourceNode;
+import org.oolong.biz.sink.AbsSinkNode;
+import org.oolong.biz.sink.NormalSinkNode;
+import org.oolong.biz.source.AbsSourceNode;
+import org.oolong.biz.source.ConstSourceNode;
 import org.oolong.entity.stream.Stream;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class InitFactory {
         SubType subType=nodeDO.getNodeType().getSubType();
         switch (subType){
             case NORMAL_SINK:
-                return new NormalSinkNode();
+                return new NormalSinkNode(nodeDO.getId());
             default:
                 throw new DataError("Sink node type error,and the sub type is"+subType);
         }
@@ -40,7 +40,7 @@ public class InitFactory {
         switch (subType){
             case CONST_SOURCE:
                 Object v=nodeDO.getParams().get("value");
-                return new ConstSourceNode((int)v);
+                return new ConstSourceNode(nodeDO.getId(),(int)v);
             default:
                 throw new DataError("Source node type error,and the sub type is"+subType);
         }
@@ -51,7 +51,7 @@ public class InitFactory {
         switch (subType){
             case GAIN_PROCESS:
                 Object v=nodeDO.getParams().get("param");
-                return new GainProcessNode((int)v);
+                return new GainProcessNode(nodeDO.getId(),(int)v);
             default:
                 throw new DataError("Source node type error,and the sub type is"+subType);
         }
@@ -70,7 +70,7 @@ public class InitFactory {
     }
 
     public static Stream createStream(StreamDO streamDO){
-        Stream stream=new Stream();
+        Stream stream=new Stream(streamDO.getId());
         List<NodeDO> nodeDOList=streamDO.getNodeList();
         if(nodeDOList.size()<2){
             return stream;
@@ -88,6 +88,6 @@ public class InitFactory {
         for(StreamDO streamDO: pageDO.getStreamList()){
             streams.add(createStream(streamDO));
         }
-        return Page.createPage(streams,pageDO.getConfig());
+        return Page.createPage(pageDO.getId(),streams,pageDO.getConfig());
     }
 }
