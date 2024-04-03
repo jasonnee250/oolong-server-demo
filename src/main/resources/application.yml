@@ -1,0 +1,30 @@
+server:
+  port: 8086
+
+spring:
+  profiles:
+    active: dev
+  redis:
+    host: 47.109.33.165
+    database: 0
+    port: 6379
+    password:
+    timeout: 1000
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.109.33.165:3306/oolong?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: Wxm13579..
+    validation-query: 'SELECT 1'
+
+logging:
+  level:
+    root: info
+
+oauth:
+  signingKey: oolongSigningKey
+  clientId: oolong
+  clientSecret: oolongSecret
+  grantType: password
+  scope: web

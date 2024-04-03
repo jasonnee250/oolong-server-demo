@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.oolong.mapper.UserMapper">
+    
+    <select id="selectByName" resultType="org.oolong.entity.db.User">
+        select id,
+               username,
+               password,
+               is_locked,
+               expired,
+               password_expired,
+               is_enabled,
+               created_at,
+               updated_at
+        from user
+        where username = #{username}
+    </select>
+    
+    <select id="selectCount" resultType="java.lang.Integer">
+        select count(*)
+        from user
+        where username = #{username}
+    </select>
+
+</mapper>

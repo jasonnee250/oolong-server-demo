@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "9775fc96-ad80-423d-94ac-9fc7f620f449",
+		"name": "乌龙茶",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "13428805"
+	},
+	"item": [
+		{
+			"name": "获取图像验证码",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "127.0.0.1:8086/v1/auth/imageCode"
+			},
+			"response": []
+		},
+		{
+			"name": "注册用户",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"wxm\",\r\n    \"password\":\"MTIzNDU2\",\r\n    \"codeId\":\"fbbb9f73-4fc9-4056-a3ba-7baac2e60097\",\r\n    \"imageCode\":\"-10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:8086/v1/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "登录",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"wxm\",\r\n    \"password\":\"MTIzNDU2\",\r\n    \"codeId\":\"379d5f65-9046-46a0-9a73-590efabaafa1\",\r\n    \"imageCode\":\"21\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:8086/v1/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "刷新token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTc3NTQxMzg2MTM1MDk2OTM0NiwiZXhwIjoxNzEyMTY5ODk2LCJ1c2VyX25hbWUiOiJ3eG0iLCJqdGkiOiI3ZDNmMjY3Ni1hMWU1LTQxNDEtODQ2ZS1mNjYxZThkMmIwZGYiLCJjbGllbnRfaWQiOiJvb2xvbmciLCJzY29wZSI6WyJ3ZWIiXX0.yw2prUY4sfTN1cqQC4oewexuoUcR5VuXaPyvtJ7bN-E"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJ3eG0iLCJzY29wZSI6WyJ3ZWIiXSwiYXRpIjoiN2QzZjI2NzYtYTFlNS00MTQxLTg0NmUtZjY2MWU4ZDJiMGRmIiwiaWQiOjE3NzU0MTM4NjEzNTA5NjkzNDYsImV4cCI6MTcxMjE2OTg5NiwianRpIjoiYjA5N2ZhNmItMWExYS00MzllLTk1YjctNzY5OGM4YWQ4NWI4IiwiY2xpZW50X2lkIjoib29sb25nIn0.-6UxVckKAsPEfiOIcjpSzHSwDWKBs43KObBsK5BX9ZA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:8086/v1/auth/refreshToken"
+			},
+			"response": []
+		}
+	]
+}

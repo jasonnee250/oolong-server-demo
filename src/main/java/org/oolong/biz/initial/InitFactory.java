@@ -26,7 +26,7 @@ import java.util.List;
 public class InitFactory {
 
     public static AbsSinkNode createSinkNode(NodeDO nodeDO){
-        SubType subType=nodeDO.getNodeType().getSubType();
+        SubType subType=nodeDO.getBizNodeType().getSubType();
         switch (subType){
             case NORMAL_SINK:
                 return new NormalSinkNode(nodeDO.getId());
@@ -36,7 +36,7 @@ public class InitFactory {
     }
 
     public static AbsSourceNode createSourceNode(NodeDO nodeDO){
-        SubType subType=nodeDO.getNodeType().getSubType();
+        SubType subType=nodeDO.getBizNodeType().getSubType();
         switch (subType){
             case CONST_SOURCE:
                 Object v=nodeDO.getParams().get("value");
@@ -47,7 +47,7 @@ public class InitFactory {
     }
 
     public static ProcessNode createProcessNode(NodeDO nodeDO){
-        SubType subType=nodeDO.getNodeType().getSubType();
+        SubType subType=nodeDO.getBizNodeType().getSubType();
         switch (subType){
             case GAIN_PROCESS:
                 Object v=nodeDO.getParams().get("param");
@@ -58,7 +58,7 @@ public class InitFactory {
     }
 
     public static Node crateNode(NodeDO nodeDO){
-        switch (nodeDO.getNodeType().getBasicType()){
+        switch (nodeDO.getBizNodeType().getBasicType()){
             case SOURCE:
                 return createSourceNode(nodeDO);
             case SINK:
