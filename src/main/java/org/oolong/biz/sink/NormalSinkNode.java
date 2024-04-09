@@ -5,6 +5,7 @@ import org.oolong.entity.basic.BasicType;
 import org.oolong.entity.basic.SubType;
 import org.oolong.entity.config.RunConfig;
 import org.oolong.entity.context.RunContext;
+import org.oolong.entity.props.DescriptionProps;
 import org.oolong.entity.serializable.NodeDO;
 
 /**
@@ -20,9 +21,10 @@ public class NormalSinkNode extends AbsSinkNode{
         this.nodeType.setType(BasicType.SINK, SubType.NORMAL_SINK);
     }
 
-    public NormalSinkNode(String id){
+    public NormalSinkNode(String id, DescriptionProps descriptionProps){
         this();
         this.id=id;
+        this.descriptionProps=descriptionProps;
     }
     @Override
     public void input(int value) {

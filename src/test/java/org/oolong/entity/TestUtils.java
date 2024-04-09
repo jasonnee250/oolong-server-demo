@@ -5,7 +5,11 @@ import org.oolong.biz.sink.AbsSinkNode;
 import org.oolong.biz.sink.NormalSinkNode;
 import org.oolong.biz.source.AbsSourceNode;
 import org.oolong.biz.source.ConstSourceNode;
+import org.oolong.entity.basic.Node;
 import org.oolong.entity.stream.Stream;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author: J.N
@@ -23,6 +27,17 @@ public class TestUtils {
         stream.addSink(sink);
         stream.pushNode(node);
         return stream;
+    }
+
+    public static Map<String, Node> createMap(){
+        AbsSourceNode source=new ConstSourceNode(5);
+        AbsSinkNode sink=new NormalSinkNode();
+        GainProcessNode node=new GainProcessNode(2);
+        Map<String, Node> map=new HashMap<>();
+        map.put(source.getId(),source);
+        map.put(sink.getId(),sink);
+        map.put(node.getId(),node);
+        return map;
     }
 
 }

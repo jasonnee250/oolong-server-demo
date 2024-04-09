@@ -1,7 +1,10 @@
 package org.oolong.entity.serializable;
 
+import com.alibaba.fastjson2.JSON;
 import lombok.Getter;
+import lombok.Setter;
 import org.oolong.entity.basic.BizNodeType;
+import org.oolong.entity.props.DescriptionProps;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -12,17 +15,24 @@ import java.util.Map;
  * @Date 2023/9/23 11:45
  * @Version 1.0
  */
+@Getter @Setter
 public class NodeDO implements Serializable {
-    @Getter
+
     String id;
-    @Getter
-    BizNodeType bizNodeType;
-    @Getter
+
+    BizTypeDO bizNodeType;
+
     Map<String,Object> params;
 
-    public NodeDO(String id, BizNodeType nodeType){
+    //样式信息
+    DescriptionProps descriptionProps;
+
+    public NodeDO(){}
+
+    public NodeDO(String id, BizNodeType nodeType, DescriptionProps descriptionProps){
         this.id=id;
-        this.bizNodeType=nodeType;
+        this.bizNodeType=nodeType.toDO();
+        this.descriptionProps=descriptionProps;
         this.params=new HashMap<>();
     }
 
@@ -32,14 +42,6 @@ public class NodeDO implements Serializable {
 
     @Override
     public String toString(){
-        StringBuilder builder=new StringBuilder();
-        builder.append("=================start=======================\n")
-                .append("id: "+id+"\n")
-                .append("node type: "+bizNodeType+"\n");
-        for(Map.Entry<String,Object> entry : params.entrySet()){
-            builder.append(entry.getKey()+" : "+entry.getValue()+"\n");
-        }
-        builder.append("===================end=======================\n");
-        return builder.toString();
+        return JSON.toJSONString(this);
     }
 }

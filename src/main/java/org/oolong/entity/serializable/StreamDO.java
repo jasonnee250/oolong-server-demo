@@ -1,5 +1,6 @@
 package org.oolong.entity.serializable;
 
+import com.alibaba.fastjson2.JSON;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,13 +32,6 @@ public class StreamDO implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder builder=new StringBuilder();
-        builder.append("=================start=======================\n")
-                .append("id: "+id+"\n");
-        for(NodeDO node : nodeList){
-            builder.append(node.toString()+"\n");
-        }
-        builder.append("===================end=======================\n");
-        return builder.toString();
+        return JSON.toJSONString(this);
     }
 }
