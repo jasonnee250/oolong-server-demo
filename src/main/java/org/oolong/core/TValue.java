@@ -1,4 +1,15 @@
 package org.oolong.core;
 
-public record TValue(float t,float value) {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class TValue {
+    
+    private float t;
+    
+    private float value;
 }
