@@ -1,4 +1,9 @@
 package org.oolong.entity.props;
 
-public record Point(float x,float y) {
+import lombok.Data;
+
+@Data
+public class Point {
+    float x;
+    float y;
 }

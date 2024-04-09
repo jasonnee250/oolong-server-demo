@@ -1,4 +1,10 @@
 package org.oolong.entity.props;
 
-public record BorderProps(float lineWidth, FillProps color, LineTypeEnum lineType) {
+import lombok.Data;
+
+@Data
+public class BorderProps {
+    float lineWidth;
+    FillProps color;
+    LineTypeEnum lineType;
 }

@@ -1,4 +1,9 @@
 package org.oolong.entity.props;
 
-public record FillProps(int color,int alpha) {
+import lombok.Data;
+
+@Data
+public class FillProps {
+    int color;
+    int alpha;
 }
