@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/v1/auth")
 @RequiredArgsConstructor
-public class AuthController {
+public class AuthController extends BaseController {
     
     private final SecurityUnionEndpoint endpoint;
     
@@ -45,6 +45,11 @@ public class AuthController {
     @GetMapping("/imageCode")
     public ResponseEntity getImageCode() {
         return ResponseEntity.success(userService.getImageCode());
+    }
+    
+    @GetMapping("/logout")
+    public ResponseEntity logout() {
+        return ResponseEntity.success(userService.logout(this.getAccessToken()));
     }
     
 }

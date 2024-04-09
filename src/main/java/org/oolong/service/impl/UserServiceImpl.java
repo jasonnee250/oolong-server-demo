@@ -13,6 +13,7 @@ import org.oolong.mapper.UserMapper;
 import org.oolong.service.UserService;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -35,6 +36,8 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     
     private final StringRedisTemplate redisTemplate;
+    
+    private final ConsumerTokenServices tokenServices;
     
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -72,6 +75,11 @@ public class UserServiceImpl implements UserService {
         
         redisTemplate.opsForValue().set(redisKey, code, 5, TimeUnit.MINUTES);
         return new ImageCode(codeId, captcha.toBase64(""));
+    }
+    
+    @Override
+    public Boolean logout(String accessToken) {
+        return tokenServices.revokeToken(accessToken);
     }
     
     /**

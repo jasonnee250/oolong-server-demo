@@ -23,4 +23,12 @@ public interface UserService {
      * @return result
      */
     ImageCode getImageCode();
+    
+    /**
+     * logout
+     *
+     * @param accessToken current token
+     * @return result
+     */
+    Boolean logout(String accessToken);
 }
