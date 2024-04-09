@@ -22,9 +22,9 @@ public class RunResult {
         builder.append("===========print the result====================\n")
                 .append("t  | v\n");
         for(TValue p:tValueList){
-            builder.append(p.t())
+            builder.append(p.getT())
                     .append("  | ")
-                    .append(p.value())
+                    .append(p.getValue())
                     .append("\n");
         }
         builder.append("============end the result=====================\n");
