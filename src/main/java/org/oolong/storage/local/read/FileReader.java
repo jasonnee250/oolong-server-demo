@@ -28,7 +28,7 @@ public class FileReader {
     }
 
     public PageDO readPage() throws IOException {
-        byte[] buffer=new byte[1024];
+        byte[] buffer=new byte[30*1024];
         bufferedInputStream.read(buffer);
         PageDO page=JSON.parseObject(buffer, PageDO.class);
         return page;

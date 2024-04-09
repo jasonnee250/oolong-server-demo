@@ -8,6 +8,7 @@ import org.oolong.entity.basic.ProcessNode;
 import org.oolong.entity.basic.SubType;
 import org.oolong.entity.config.RunConfig;
 import org.oolong.entity.context.RunContext;
+import org.oolong.entity.props.DescriptionProps;
 import org.oolong.entity.serializable.NodeDO;
 
 /**
@@ -26,9 +27,10 @@ public class GainProcessNode extends ProcessNode {
      */
     private int value;
 
-    public GainProcessNode(String id, int param) {
+    public GainProcessNode(String id, int param, DescriptionProps descriptionProps) {
         this(param);
-        this.id = id;
+        this.id=id;
+        this.descriptionProps=descriptionProps;
     }
 
     public GainProcessNode(int param) {

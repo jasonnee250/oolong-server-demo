@@ -15,6 +15,8 @@ public class RunConfig {
     public float simulateTime=1.0f;
     public float stepTime=0.1f;
 
+    public RunConfig(){}
+
     public RunConfig(float simulateTime,float stepTime){
         this.simulateTime=simulateTime;
         this.stepTime=stepTime;

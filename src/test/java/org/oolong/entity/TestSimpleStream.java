@@ -2,6 +2,7 @@ package org.oolong.entity;
 
 import org.junit.Test;
 import org.oolong.biz.initial.InitFactory;
+import org.oolong.entity.basic.Node;
 import org.oolong.entity.config.RunConfig;
 import org.oolong.entity.context.RunContext;
 import org.oolong.entity.doc.Page;
@@ -12,7 +13,9 @@ import org.oolong.storage.local.write.FileWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: J.N
@@ -34,11 +37,11 @@ public class TestSimpleStream {
 
     @Test
     public void testWriteFile(){
-        Stream stream=TestUtils.createStream();
-        List<Stream> streams=new ArrayList<>();
-        streams.add(stream);
+        Map<String,Node> map=TestUtils.createMap();
+//        List<Stream> streams=new ArrayList<>();
+//        streams.add(stream);
         RunConfig config=new RunConfig(10,1);
-        Page page=Page.createPage(streams,config);
+        Page page=Page.createPage(map,config);
         PageDO pageDO=page.toPageDO();
         try{
             FileWriter fileWriter=new FileWriter("/Users/nijiaxin/files/testFile"+".oolong");
@@ -55,10 +58,10 @@ public class TestSimpleStream {
             FileReader reader=new FileReader("/Users/nijiaxin/files/testFile"+".oolong");
             PageDO pageDO=reader.readPage();
             Page page= InitFactory.createPage(pageDO);
-            Stream stream=page.getStreamList().get(0);
-            RunContext ctx=new RunContext();
-            stream.run(page.getConfig(),ctx);
-            System.out.println(ctx.getRunResult().toString());
+//            Stream stream=page.getStreamList().get(0);
+//            RunContext ctx=new RunContext();
+//            stream.run(page.getConfig(),ctx);
+//            System.out.println(ctx.getRunResult().toString());
         }catch (IOException e){
             e.printStackTrace();
         }
